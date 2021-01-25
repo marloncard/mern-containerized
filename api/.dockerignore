@@ -1,0 +1,13 @@
+# Dependecy directories
+node_modules
+
+# Node template
+## Logs
+npm-debug.log
+
+# Dotenv environment variable file
+.env
+
+# Git
+.git
+.gitignore
