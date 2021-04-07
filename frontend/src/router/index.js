@@ -3,6 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from '../components/Home/Home';
 
+/**
+ * 
+ * Array of top level and nested routes
+ */
 const router = [
 
   {
@@ -14,7 +18,6 @@ const router = [
   {
     path: "/sample",
     key: "sample",
-    exact: true,
     component: RenderRoutes,
     routes: [
       {
@@ -35,7 +38,6 @@ const router = [
 
 export default router;
 
-
 /**
  * 
  * Render a route with potential subroutes
@@ -52,7 +54,7 @@ function RouteWithSubRoutes(route) {
 };
 
 /**
- *  Use for any new section of routes 
+ *  Use for any new section of routes (any config object that has a routes property)
  */
 export function RenderRoutes({ routes }) {
   return (
@@ -60,7 +62,7 @@ export function RenderRoutes({ routes }) {
       {routes.map((route, i) => {
         return <RouteWithSubRoutes key={route.key} {...route} />;
       })}
-        <Route component={() => <h1>Not Found!</h1>} />
+      <Route component={() => <h1>Not Found!</h1>} />
     </Switch>
   );
 };

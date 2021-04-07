@@ -8,6 +8,9 @@ Run project with:
 docker-compose up --build
 ```
 
+⚡️ [server]: is running at http://localhost:8080
+👀 [frontend]: is running at http://localhost:3000
+
 ## Dependencies
 
 ### Typescript
@@ -39,11 +42,8 @@ Connect via mongo shell ( install `mongodb-org-shell`):
 
 ```
 docker exec -it <container_name> bash
-
-# Or outside docker container:
 mongo admin -u <username> -p <password>
 ```
-
 
 
 Access mongo db server logs via docker's container logs:
