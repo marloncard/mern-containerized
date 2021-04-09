@@ -15,8 +15,7 @@ export async function handler(req: Request, res: Response, next: NextFunction) {
     const user = new User(req.body);
     await user.save()
       .then(() => {
-        console.log("User created");
         res.status(200).json(user);
       })
-      .catch(err => next(err  ));
+      .catch(err => next(err));
 }

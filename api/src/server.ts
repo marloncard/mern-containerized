@@ -80,7 +80,7 @@ export class Server {
     const corsRef = cors();
     this.app.use(corsRef);
 
-    // Parse incoming resquest bodies
+    // Parse incoming request bodies
     this.app.use(express.json());
   }
   /**

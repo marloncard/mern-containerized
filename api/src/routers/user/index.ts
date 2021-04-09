@@ -3,6 +3,8 @@ import { validate } from 'express-validation';
 
 const router: express.Router = express.Router();
 
+import { schema as getSchema, handler as getHandler } from './get';
+router.get('/:id', validate(getSchema), getHandler);
 
 import { handler as listHandler } from './list';
 router.get('/', listHandler);

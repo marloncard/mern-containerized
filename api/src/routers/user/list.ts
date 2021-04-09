@@ -7,6 +7,6 @@ export async function handler(req: Request, res: Response, next: NextFunction) {
         const users = await User.find();
         res.json(users);
     } catch (err) {
-        console.log(err);
+        next(err);
     };
 }
