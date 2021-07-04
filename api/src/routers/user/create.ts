@@ -17,5 +17,5 @@ export async function handler(req: Request, res: Response, next: NextFunction) {
       .then(() => {
         res.status(200).json(user);
       })
-      .catch(err => next(err));
+      .catch((err:any) => next(err));
 }

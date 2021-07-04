@@ -55,7 +55,7 @@ export class Server {
 
       });
       const PORT = 8080;
-      console.info(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+      console.info(`⚡️ [server]: Server is running at https://localhost:${PORT}`);
       this.httpServer = this.app.listen(process.env.PORT || PORT)
       return this.httpServer;
     });

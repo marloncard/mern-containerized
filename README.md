@@ -2,20 +2,23 @@
 
 ## Start
 
+Install [docker](https://www.docker.com/)
+
 Run project with:
 
 ```
 docker-compose up --build
 ```
 
-⚡️ [server]: is running at http://localhost:8080
+⚡️ [api]: is running at http://localhost:8080
+
 👀 [frontend]: is running at http://localhost:3000
 
 ## Dependencies
 
 ### Typescript
 
-Install `typescript` package to compile TypeScript to valid JavaScript. `ts-node` utility library to used to run development server written using typescript directly from terminal. Both are installed as dev dependencies with the `-D` flag.
+Install `typescript` package to compile TypeScript to valid JavaScript. `ts-node` utility library is used to run development server written using typescript directly from terminal. Both are installed as dev dependencies with the `-D` flag.
 
 ```
 npm install express
@@ -42,7 +45,7 @@ Connect via mongo shell ( install `mongodb-org-shell`):
 
 ```
 docker exec -it <container_name> bash
-mongo admin -u <username> -p <password>
+mongo admin -u <username> -p <password> (default settings require no credentials)
 ```
 
 
@@ -95,7 +98,7 @@ db.version()
 Connection string for docker container:
 
 ```
-mongodb:<ip-address>:27017
+mongodb://<ip-address>:27017
 ```
 
 ### Mongoose
@@ -104,7 +107,6 @@ Install mongoose package:
 
 ```
 npm i mongoose
-npm install -D @types/mongoose
 ```
 
 ## Proxy Settings
@@ -132,6 +134,7 @@ const corsRef = cors();
 app.use(corsRef);
 ```
 
+
 ## REFERENCES
 
 https://blog.logrocket.com/typescript-with-node-js-and-express/
@@ -139,3 +142,10 @@ https://blog.logrocket.com/typescript-with-node-js-and-express/
 ## EMOJIS
 
 https://emojis.wiki/
+
+
+
+TODO:
+
+1. Error types
+2. Fix code reload
