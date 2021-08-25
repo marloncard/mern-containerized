@@ -12,23 +12,24 @@ import UserRouter from './routers/user';
  * @class Server
  */
 export class Server {
-
+  public test: boolean;
   public app: express.Application;
   public httpServer!: http.Server;
 
-  public static bootstrap(): Server {
-    return new Server();
+  public static bootstrap(runTest:boolean): Server {
+    return new Server(runTest);
   }
-  
-  constructor() {
-
+  constructor(test:boolean) {
+    // Arg to determine if running a test
+    this.test = test
     // Create express application
     this.app = express();
-
     // Configure the application
     this.config();
 
-    connectDb()?.then(() => { console.log("Connected to Mongo!"); });
+    if (this.test === false) {
+      connectDb()?.then(() => { console.log("Connected to Mongo!"); });
+    }
 
     const baseRouter = express.Router();
 
@@ -56,8 +57,14 @@ export class Server {
       });
       const PORT = 8080;
       console.info(`⚡️ [server]: Server is running at https://localhost:${PORT}`);
-      this.httpServer = this.app.listen(process.env.PORT || PORT)
-      return this.httpServer;
+      if (this.test) {
+        this.httpServer = this.app.listen(0)
+        return this.httpServer;
+      } else {
+        this.httpServer = this.app.listen(process.env.PORT || PORT)
+        return this.httpServer;
+      }
+
     });
   }
   

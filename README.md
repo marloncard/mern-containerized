@@ -134,6 +134,28 @@ const corsRef = cors();
 app.use(corsRef);
 ```
 
+## TESTS
+
+Using [Jest](https://jestjs.io/) and [Supertest](https://github.com/visionmedia/supertest)
+
+1. Install Jest, supertest, ts-jest as well as typescript types
+
+```
+npm install --save-dev jest @types/jest supertest @types/supertest
+npm install --save-dev ts-jest
+```
+
+Jest will recognize test files:
+
+- That have extension `.test.js`
+- That have extension `.spec.js`
+- Inside `__tests__` directory.
+
+2. Install the test database
+
+```
+npm install --save-dev mongodb-memory-server
+```
 
 ## REFERENCES
 
@@ -142,7 +164,6 @@ https://blog.logrocket.com/typescript-with-node-js-and-express/
 ## EMOJIS
 
 https://emojis.wiki/
-
 
 
 TODO:

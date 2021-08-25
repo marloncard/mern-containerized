@@ -1,12 +1,30 @@
 import { useState, useEffect } from 'react';
-import { apiCreate, apiGet } from '../../util/api';
+import { apiCreate, apiGet, apiUpdate, apiDelete } from '../../util/api';
+
+import UserForm from './UserForm';
+import UserTable from './UserTable';
 
 export default function User() {
-  const [ Users, SetUsers ] = useState([]);
+  const [ Users, setUsers ] = useState([]);
+  const [ userId, setUserId ] = useState(null);
+  const [ currentUser, setCurrentUser ] = useState({});
 
   const loadUsers = async () => {
-    const userResp = await apiGet('users');
-    SetUsers(userResp);
+    const resp = await apiGet('users');
+    setUsers(resp);
+  }
+  const loadForm = (uId) => {
+    const userRow = Users.filter((user) => user._id === uId)[0];
+    document.getElementById('username').value = userRow.userName;
+    document.getElementById('firstname').value = userRow.firstName;
+    document.getElementById('lastname').value = userRow.lastName;
+    document.getElementById('email').value = userRow.email;
+    setUserId(uId);
+  }
+  const deleteOne = (userId) => {
+    apiDelete(`users/${userId}`);
+    const newUsers = Users.filter((user) => user._id !==userId);
+    setUsers([...newUsers]);
   }
 
   // Load sample data
@@ -27,40 +45,20 @@ export default function User() {
     createUser(sampleUser)
   }, [])
 
-  const userArrayElement = (
-    Users.map((user) => {
-      return <tr key={user._id}>
-        <td>{user.userName}</td>
-        <td>{user.firstName}</td>
-        <td>{user.lastName}</td>
-        <td>{user.email}</td>
-      </tr>
-    })
-  )
 
   return (
-    <>
-      <h1>Users</h1>
-      <table>
-        <tbody>
-          <tr>
-            <th>
-              <h2>User Name</h2>
-            </th>
-            <th>
-              <h2>First Name</h2>
-            </th>
-            <th>
-              <h2>Last Name</h2>
-            </th>
-            <th>
-              <h2>Email</h2>
-            </th>
-          </tr>
-          {userArrayElement}
-        </tbody>
-      </table>
-    </>
+    <div style={{ marginLeft: 10 }}>
+      <UserTable
+        Users={Users}
+        loadForm={loadForm}
+        deleteOne={deleteOne}
+      />
+      <UserForm
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+        userId={userId}
+      />
+    </div>
   )
 
 };

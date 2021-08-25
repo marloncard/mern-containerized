@@ -12,4 +12,10 @@ router.get('/', listHandler);
 import { schema as createSchema, handler as createHandler } from './create';
 router.post('/', validate(createSchema), createHandler);
 
+import { schema as updateSchema, handler as updateHandler } from './update';
+router.patch('/:id', validate(updateSchema), updateHandler);
+
+import { schema as deleteSchema, handler as deleteHandler } from './delete';
+router.delete('/:id', validate(deleteSchema), deleteHandler);
+
 export default router;

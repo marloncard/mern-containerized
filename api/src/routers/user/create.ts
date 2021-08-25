@@ -12,10 +12,10 @@ export const schema = {
 };
 
 export async function handler(req: Request, res: Response, next: NextFunction) {
-    const user = new User(req.body);
-    await user.save()
-      .then(() => {
-        res.status(200).json(user);
-      })
-      .catch((err:any) => next(err));
+  const user = new User(req.body);
+  await user.save()
+    .then(() => {
+      res.status(200).json(user);
+    })
+    .catch((err:any) => next(err));
 }

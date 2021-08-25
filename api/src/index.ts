@@ -1,6 +1,6 @@
 import { Server } from './server';
 
-const serverInst: Server = Server.bootstrap();
+const serverInst: Server = Server.bootstrap(false);
 
 serverInst.start();
 
