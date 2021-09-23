@@ -5,7 +5,6 @@ export default function UserForm({currentUser, setCurrentUser, userId}) {
   return (
     <form onSubmit={(e) => { 
       e.preventDefault();
-      console.log(currentUser);
       apiUpdate(`users/${userId}`, currentUser);
       }
     }>

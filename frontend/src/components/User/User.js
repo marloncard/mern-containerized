@@ -3,9 +3,10 @@ import { apiCreate, apiGet, apiUpdate, apiDelete } from '../../util/api';
 
 import UserForm from './UserForm';
 import UserTable from './UserTable';
+import UserSample from './UserSample';
 
 export default function User() {
-  const [ Users, setUsers ] = useState([]);
+  const [ users, setUsers ] = useState([]);
   const [ userId, setUserId ] = useState(null);
   const [ currentUser, setCurrentUser ] = useState({});
 
@@ -14,7 +15,7 @@ export default function User() {
     setUsers(resp);
   }
   const loadForm = (uId) => {
-    const userRow = Users.filter((user) => user._id === uId)[0];
+    const userRow = users.filter((user) => user._id === uId)[0];
     document.getElementById('username').value = userRow.userName;
     document.getElementById('firstname').value = userRow.firstName;
     document.getElementById('lastname').value = userRow.lastName;
@@ -23,36 +24,28 @@ export default function User() {
   }
   const deleteOne = (userId) => {
     apiDelete(`users/${userId}`);
-    const newUsers = Users.filter((user) => user._id !==userId);
+    const newUsers = users.filter((user) => user._id !==userId);
     setUsers([...newUsers]);
   }
 
   // Load sample data
   useEffect(() => {
-    // Sample Data
-    const sampleUser = {
-      userName: 'Bobd',
-      firstName: 'Rob',
-      lastName: 'Hole',
-      email:'bobyd@gmail.com'
-    }
-
-    const createUser = async (userData) => {
-      await apiCreate('users', userData);
-      loadUsers();
-    };
-
-    createUser(sampleUser)
+    loadUsers();
   }, [])
 
 
   return (
-    <div style={{ marginLeft: 10 }}>
+    <div style={{  margin: '0px 30px' }}>
+      <h1>Users</h1>
+      <hr></hr>
+      <UserSample />
+      <hr></hr>
       <UserTable
-        Users={Users}
+        users={users}
         loadForm={loadForm}
         deleteOne={deleteOne}
       />
+      <hr></hr>
       <UserForm
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}

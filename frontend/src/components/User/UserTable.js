@@ -1,7 +1,7 @@
-export default function UserTable({Users, loadForm, deleteOne}) {
+export default function UserTable({users, loadForm, deleteOne}) {
   let userArrayElement;
     userArrayElement = (
-      Users.map((user) => {
+      users.map((user) => {
         return <tr key={user._id}>
           <td>{user.userName}</td>
           <td>{user.firstName}</td>
@@ -14,7 +14,6 @@ export default function UserTable({Users, loadForm, deleteOne}) {
     )
   return (
     <>
-    <h1>Users</h1>
       <table>
         <tbody>
           <tr>
