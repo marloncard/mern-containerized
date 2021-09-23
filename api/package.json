@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "express-validation": "^3.0.6",
     "joi": "^17.3.0",
-    "mongoose": "^5.13.1"
+    "mongoose": "^5.13.9"
   },
   "devDependencies": {
     "@types/cors": "^2.8.9",

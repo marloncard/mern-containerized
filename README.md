@@ -136,6 +136,8 @@ app.use(corsRef);
 
 ## TESTS
 
+### API
+
 Using [Jest](https://jestjs.io/) and [Supertest](https://github.com/visionmedia/supertest)
 
 1. Install Jest, supertest, ts-jest as well as typescript types
@@ -157,6 +159,13 @@ Jest will recognize test files:
 npm install --save-dev mongodb-memory-server
 ```
 
+3. To run tests:
+
+```
+cd api
+npm test
+```
+
 ## REFERENCES
 
 https://blog.logrocket.com/typescript-with-node-js-and-express/
@@ -170,3 +179,5 @@ TODO:
 
 1. Error types
 2. Fix code reload
+3. Test Frontend
+4. Add Elastic Beanstalk deploy
