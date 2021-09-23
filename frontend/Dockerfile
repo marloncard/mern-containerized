@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install app dependencies
-RUN yarn install
+RUN npm install
 
 # For production use:
 # RUN npm ci --only=production
@@ -17,4 +17,4 @@ COPY . .
 
 # Expose port and start application
 EXPOSE 3000
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
